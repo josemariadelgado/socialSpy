@@ -1,0 +1,687 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4603F1C11D662AE200A80FAA /* ConstraintsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4603F1C01D662AE200A80FAA /* ConstraintsManager.swift */; };
+		468B6BC91D6383170037E705 /* spy.png in Resources */ = {isa = PBXBuildFile; fileRef = 468B6BC81D6383170037E705 /* spy.png */; };
+		468B6BCB1D6390AF0037E705 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 468B6BCA1D6390AF0037E705 /* Alamofire.framework */; };
+		468B6BCC1D6392490037E705 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 468B6BCA1D6390AF0037E705 /* Alamofire.framework */; };
+		468B6BCD1D6392490037E705 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 468B6BCA1D6390AF0037E705 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		46908EB81D4938740096E2EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46908EB71D4938740096E2EA /* AppDelegate.swift */; };
+		46908EBA1D4938740096E2EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46908EB91D4938740096E2EA /* ViewController.swift */; };
+		46908EC01D4938740096E2EA /* socialPicket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46908EBE1D4938740096E2EA /* socialPicket.xcdatamodeld */; };
+		46908EC21D4938740096E2EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46908EC11D4938740096E2EA /* Assets.xcassets */; };
+		46908EC51D4938740096E2EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46908EC31D4938740096E2EA /* LaunchScreen.storyboard */; };
+		46908ED01D4938740096E2EA /* socialPicketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46908ECF1D4938740096E2EA /* socialPicketTests.swift */; };
+		46908EDB1D4938740096E2EA /* socialPicketUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46908EDA1D4938740096E2EA /* socialPicketUITests.swift */; };
+		46908EEB1D4938920096E2EA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46908EE91D4938920096E2EA /* FBSDKCoreKit.framework */; };
+		46908EEC1D4938920096E2EA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46908EEA1D4938920096E2EA /* FBSDKLoginKit.framework */; };
+		46908EEE1D49474E0096E2EA /* facebook-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 46908EED1D49474E0096E2EA /* facebook-logo.png */; };
+		4699B61B1D55618700A73E23 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4699B61A1D55618700A73E23 /* WelcomeViewController.swift */; };
+		46F54E551D64E8BF00D11610 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F54E541D64E8BF00D11610 /* StoreKit.framework */; };
+		46F54E571D64F51100D11610 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46F54E561D64F51100D11610 /* GoogleService-Info.plist */; };
+		7B126D1383CC89BA28F698BF /* libPods-socialPicket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F9B43A7416BABE21D7950B /* libPods-socialPicket.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		46908ECC1D4938740096E2EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46908EAC1D4938740096E2EA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46908EB31D4938740096E2EA;
+			remoteInfo = socialPicket;
+		};
+		46908ED71D4938740096E2EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46908EAC1D4938740096E2EA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46908EB31D4938740096E2EA;
+			remoteInfo = socialPicket;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		468B6BCE1D6392490037E705 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				468B6BCD1D6392490037E705 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1A6F5F5458BC84E2AA0C6906 /* Pods-socialPicket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-socialPicket.debug.xcconfig"; path = "Pods/Target Support Files/Pods-socialPicket/Pods-socialPicket.debug.xcconfig"; sourceTree = "<group>"; };
+		4603F1C01D662AE200A80FAA /* ConstraintsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintsManager.swift; sourceTree = "<group>"; };
+		468B6BC81D6383170037E705 /* spy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spy.png; sourceTree = "<group>"; };
+		468B6BCA1D6390AF0037E705 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		46908EB41D4938740096E2EA /* socialPicket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = socialPicket.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		46908EB71D4938740096E2EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		46908EB91D4938740096E2EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		46908EBF1D4938740096E2EA /* socialPicket.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = socialPicket.xcdatamodel; sourceTree = "<group>"; };
+		46908EC11D4938740096E2EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		46908EC41D4938740096E2EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		46908EC61D4938740096E2EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46908ECB1D4938740096E2EA /* socialPicketTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = socialPicketTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		46908ECF1D4938740096E2EA /* socialPicketTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = socialPicketTests.swift; sourceTree = "<group>"; };
+		46908ED11D4938740096E2EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46908ED61D4938740096E2EA /* socialPicketUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = socialPicketUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		46908EDA1D4938740096E2EA /* socialPicketUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = socialPicketUITests.swift; sourceTree = "<group>"; };
+		46908EDC1D4938740096E2EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46908EE91D4938920096E2EA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../../Downloads/FacebookSDKs-iOS-4/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		46908EEA1D4938920096E2EA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../../Downloads/FacebookSDKs-iOS-4/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		46908EED1D49474E0096E2EA /* facebook-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook-logo.png"; sourceTree = "<group>"; };
+		4699B61A1D55618700A73E23 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		46F54E541D64E8BF00D11610 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		46F54E561D64F51100D11610 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		62F9B43A7416BABE21D7950B /* libPods-socialPicket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-socialPicket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCCCAD4FDF18F58BE733135C /* Pods-socialPicket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-socialPicket.release.xcconfig"; path = "Pods/Target Support Files/Pods-socialPicket/Pods-socialPicket.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		46908EB11D4938740096E2EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46908EEC1D4938920096E2EA /* FBSDKLoginKit.framework in Frameworks */,
+				468B6BCB1D6390AF0037E705 /* Alamofire.framework in Frameworks */,
+				46F54E551D64E8BF00D11610 /* StoreKit.framework in Frameworks */,
+				46908EEB1D4938920096E2EA /* FBSDKCoreKit.framework in Frameworks */,
+				468B6BCC1D6392490037E705 /* Alamofire.framework in Frameworks */,
+				7B126D1383CC89BA28F698BF /* libPods-socialPicket.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46908EC81D4938740096E2EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46908ED31D4938740096E2EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		46908EAB1D4938740096E2EA = {
+			isa = PBXGroup;
+			children = (
+				46F54E561D64F51100D11610 /* GoogleService-Info.plist */,
+				468B6BC81D6383170037E705 /* spy.png */,
+				46908EED1D49474E0096E2EA /* facebook-logo.png */,
+				46908EE81D49387F0096E2EA /* Frameworks */,
+				46908EB61D4938740096E2EA /* socialPicket */,
+				46908ECE1D4938740096E2EA /* socialPicketTests */,
+				46908ED91D4938740096E2EA /* socialPicketUITests */,
+				46908EB51D4938740096E2EA /* Products */,
+				E72E6C83EBB4BAF6F03B89AB /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		46908EB51D4938740096E2EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				46908EB41D4938740096E2EA /* socialPicket.app */,
+				46908ECB1D4938740096E2EA /* socialPicketTests.xctest */,
+				46908ED61D4938740096E2EA /* socialPicketUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		46908EB61D4938740096E2EA /* socialPicket */ = {
+			isa = PBXGroup;
+			children = (
+				46908EB71D4938740096E2EA /* AppDelegate.swift */,
+				4699B61A1D55618700A73E23 /* WelcomeViewController.swift */,
+				46908EB91D4938740096E2EA /* ViewController.swift */,
+				4603F1C01D662AE200A80FAA /* ConstraintsManager.swift */,
+				46908EC11D4938740096E2EA /* Assets.xcassets */,
+				46908EC31D4938740096E2EA /* LaunchScreen.storyboard */,
+				46908EC61D4938740096E2EA /* Info.plist */,
+				46908EBE1D4938740096E2EA /* socialPicket.xcdatamodeld */,
+			);
+			path = socialPicket;
+			sourceTree = "<group>";
+		};
+		46908ECE1D4938740096E2EA /* socialPicketTests */ = {
+			isa = PBXGroup;
+			children = (
+				46908ECF1D4938740096E2EA /* socialPicketTests.swift */,
+				46908ED11D4938740096E2EA /* Info.plist */,
+			);
+			path = socialPicketTests;
+			sourceTree = "<group>";
+		};
+		46908ED91D4938740096E2EA /* socialPicketUITests */ = {
+			isa = PBXGroup;
+			children = (
+				46908EDA1D4938740096E2EA /* socialPicketUITests.swift */,
+				46908EDC1D4938740096E2EA /* Info.plist */,
+			);
+			path = socialPicketUITests;
+			sourceTree = "<group>";
+		};
+		46908EE81D49387F0096E2EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				46F54E541D64E8BF00D11610 /* StoreKit.framework */,
+				468B6BCA1D6390AF0037E705 /* Alamofire.framework */,
+				46908EE91D4938920096E2EA /* FBSDKCoreKit.framework */,
+				46908EEA1D4938920096E2EA /* FBSDKLoginKit.framework */,
+				62F9B43A7416BABE21D7950B /* libPods-socialPicket.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E72E6C83EBB4BAF6F03B89AB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1A6F5F5458BC84E2AA0C6906 /* Pods-socialPicket.debug.xcconfig */,
+				DCCCAD4FDF18F58BE733135C /* Pods-socialPicket.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		46908EB31D4938740096E2EA /* socialPicket */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46908EDF1D4938740096E2EA /* Build configuration list for PBXNativeTarget "socialPicket" */;
+			buildPhases = (
+				CE9F5327233C2DFE12C8C91F /* Check Pods Manifest.lock */,
+				46908EB01D4938740096E2EA /* Sources */,
+				46908EB11D4938740096E2EA /* Frameworks */,
+				46908EB21D4938740096E2EA /* Resources */,
+				468B6BCE1D6392490037E705 /* Embed Frameworks */,
+				3F7A9EE60411A9D25753F124 /* Embed Pods Frameworks */,
+				EF0E59F489A676237AEBD971 /* Copy Pods Resources */,
+				4603F1A21D6521CB00A80FAA /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = socialPicket;
+			productName = socialPicket;
+			productReference = 46908EB41D4938740096E2EA /* socialPicket.app */;
+			productType = "com.apple.product-type.application";
+		};
+		46908ECA1D4938740096E2EA /* socialPicketTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46908EE21D4938740096E2EA /* Build configuration list for PBXNativeTarget "socialPicketTests" */;
+			buildPhases = (
+				46908EC71D4938740096E2EA /* Sources */,
+				46908EC81D4938740096E2EA /* Frameworks */,
+				46908EC91D4938740096E2EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46908ECD1D4938740096E2EA /* PBXTargetDependency */,
+			);
+			name = socialPicketTests;
+			productName = socialPicketTests;
+			productReference = 46908ECB1D4938740096E2EA /* socialPicketTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		46908ED51D4938740096E2EA /* socialPicketUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46908EE51D4938740096E2EA /* Build configuration list for PBXNativeTarget "socialPicketUITests" */;
+			buildPhases = (
+				46908ED21D4938740096E2EA /* Sources */,
+				46908ED31D4938740096E2EA /* Frameworks */,
+				46908ED41D4938740096E2EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46908ED81D4938740096E2EA /* PBXTargetDependency */,
+			);
+			name = socialPicketUITests;
+			productName = socialPicketUITests;
+			productReference = 46908ED61D4938740096E2EA /* socialPicketUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46908EAC1D4938740096E2EA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "José María Delgado";
+				TargetAttributes = {
+					46908EB31D4938740096E2EA = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 4V69PP9G2M;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+					46908ECA1D4938740096E2EA = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 46908EB31D4938740096E2EA;
+					};
+					46908ED51D4938740096E2EA = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 46908EB31D4938740096E2EA;
+					};
+				};
+			};
+			buildConfigurationList = 46908EAF1D4938740096E2EA /* Build configuration list for PBXProject "socialPicket" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 46908EAB1D4938740096E2EA;
+			productRefGroup = 46908EB51D4938740096E2EA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				46908EB31D4938740096E2EA /* socialPicket */,
+				46908ECA1D4938740096E2EA /* socialPicketTests */,
+				46908ED51D4938740096E2EA /* socialPicketUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		46908EB21D4938740096E2EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46908EEE1D49474E0096E2EA /* facebook-logo.png in Resources */,
+				46908EC51D4938740096E2EA /* LaunchScreen.storyboard in Resources */,
+				46F54E571D64F51100D11610 /* GoogleService-Info.plist in Resources */,
+				468B6BC91D6383170037E705 /* spy.png in Resources */,
+				46908EC21D4938740096E2EA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46908EC91D4938740096E2EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46908ED41D4938740096E2EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3F7A9EE60411A9D25753F124 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-socialPicket/Pods-socialPicket-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4603F1A21D6521CB00A80FAA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone";
+		};
+		CE9F5327233C2DFE12C8C91F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EF0E59F489A676237AEBD971 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-socialPicket/Pods-socialPicket-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		46908EB01D4938740096E2EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46908EC01D4938740096E2EA /* socialPicket.xcdatamodeld in Sources */,
+				46908EBA1D4938740096E2EA /* ViewController.swift in Sources */,
+				4699B61B1D55618700A73E23 /* WelcomeViewController.swift in Sources */,
+				46908EB81D4938740096E2EA /* AppDelegate.swift in Sources */,
+				4603F1C11D662AE200A80FAA /* ConstraintsManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46908EC71D4938740096E2EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46908ED01D4938740096E2EA /* socialPicketTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46908ED21D4938740096E2EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46908EDB1D4938740096E2EA /* socialPicketUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		46908ECD1D4938740096E2EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46908EB31D4938740096E2EA /* socialPicket */;
+			targetProxy = 46908ECC1D4938740096E2EA /* PBXContainerItemProxy */;
+		};
+		46908ED81D4938740096E2EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46908EB31D4938740096E2EA /* socialPicket */;
+			targetProxy = 46908ED71D4938740096E2EA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		46908EC31D4938740096E2EA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46908EC41D4938740096E2EA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		46908EDD1D4938740096E2EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		46908EDE1D4938740096E2EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		46908EE01D4938740096E2EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A6F5F5458BC84E2AA0C6906 /* Pods-socialPicket.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FELIPE DELGADO QUINTANA (4V69PP9G2M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FELIPE DELGADO QUINTANA (4V69PP9G2M)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"/Users/josemaria/Downloads/FacebookSDKs-IOS-4",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = socialPicket/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JoseMariaDelgado.socialSpy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "13980230-5d25-497c-b262-0b1294cd520b";
+			};
+			name = Debug;
+		};
+		46908EE11D4938740096E2EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCCCAD4FDF18F58BE733135C /* Pods-socialPicket.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FELIPE DELGADO QUINTANA (4V69PP9G2M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FELIPE DELGADO QUINTANA (4V69PP9G2M)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"/Users/josemaria/Downloads/FacebookSDKs-IOS-4",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = socialPicket/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JoseMariaDelgado.socialSpy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "13980230-5d25-497c-b262-0b1294cd520b";
+			};
+			name = Release;
+		};
+		46908EE31D4938740096E2EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = socialPicketTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JoseMariaDelgado.socialPicketTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/socialPicket.app/socialPicket";
+			};
+			name = Debug;
+		};
+		46908EE41D4938740096E2EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = socialPicketTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JoseMariaDelgado.socialPicketTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/socialPicket.app/socialPicket";
+			};
+			name = Release;
+		};
+		46908EE61D4938740096E2EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = socialPicketUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JoseMariaDelgado.socialPicketUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = socialPicket;
+			};
+			name = Debug;
+		};
+		46908EE71D4938740096E2EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = socialPicketUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JoseMariaDelgado.socialPicketUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = socialPicket;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		46908EAF1D4938740096E2EA /* Build configuration list for PBXProject "socialPicket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46908EDD1D4938740096E2EA /* Debug */,
+				46908EDE1D4938740096E2EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46908EDF1D4938740096E2EA /* Build configuration list for PBXNativeTarget "socialPicket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46908EE01D4938740096E2EA /* Debug */,
+				46908EE11D4938740096E2EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46908EE21D4938740096E2EA /* Build configuration list for PBXNativeTarget "socialPicketTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46908EE31D4938740096E2EA /* Debug */,
+				46908EE41D4938740096E2EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46908EE51D4938740096E2EA /* Build configuration list for PBXNativeTarget "socialPicketUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46908EE61D4938740096E2EA /* Debug */,
+				46908EE71D4938740096E2EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		46908EBE1D4938740096E2EA /* socialPicket.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				46908EBF1D4938740096E2EA /* socialPicket.xcdatamodel */,
+			);
+			currentVersion = 46908EBF1D4938740096E2EA /* socialPicket.xcdatamodel */;
+			path = socialPicket.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 46908EAC1D4938740096E2EA /* Project object */;
+}
