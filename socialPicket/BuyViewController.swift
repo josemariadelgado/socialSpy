@@ -290,13 +290,13 @@ class BuyViewController: UIViewController {
     func showAllList() {
         let premium = NSUserDefaults.standardUserDefaults().boolForKey("premiumMember")
         let inApp = InAppViewController()
-        let list = ViewController()
+        let list = LastVisitorsViewController()
         
-        if premium {
+//        if premium {
             self.navigationController?.pushViewController(list, animated: true)
-        } else {
-            self.navigationController?.pushViewController(inApp, animated: true)
-        }
+//        } else {
+//            self.navigationController?.pushViewController(inApp, animated: true)
+//        }
     }
     
     func showLogoutAlert(sender: AnyObject) {

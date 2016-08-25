@@ -22,6 +22,7 @@
 		46908EEB1D4938920096E2EA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46908EE91D4938920096E2EA /* FBSDKCoreKit.framework */; };
 		46908EEC1D4938920096E2EA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46908EEA1D4938920096E2EA /* FBSDKLoginKit.framework */; };
 		4699B61B1D55618700A73E23 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4699B61A1D55618700A73E23 /* WelcomeViewController.swift */; };
+		46B6F2E81D6F3A120044FB1D /* LastVisitorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B6F2E71D6F3A120044FB1D /* LastVisitorsViewController.swift */; };
 		46D94E7F1D6A59B300B264FF /* InAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D94E7E1D6A59B300B264FF /* InAppViewController.swift */; };
 		46D94E811D6B1B0600B264FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46D94E801D6B1B0600B264FF /* GoogleService-Info.plist */; };
 		46F54E551D64E8BF00D11610 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F54E541D64E8BF00D11610 /* StoreKit.framework */; };
@@ -80,6 +81,7 @@
 		46908EE91D4938920096E2EA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../../Downloads/FacebookSDKs-iOS-4/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		46908EEA1D4938920096E2EA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../../Downloads/FacebookSDKs-iOS-4/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		4699B61A1D55618700A73E23 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		46B6F2E71D6F3A120044FB1D /* LastVisitorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastVisitorsViewController.swift; sourceTree = "<group>"; };
 		46D94E7E1D6A59B300B264FF /* InAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppViewController.swift; sourceTree = "<group>"; };
 		46D94E801D6B1B0600B264FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46F54E541D64E8BF00D11610 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -149,6 +151,7 @@
 				465B348A1D6A3B9D003612AD /* BuyViewController.swift */,
 				46D94E7E1D6A59B300B264FF /* InAppViewController.swift */,
 				46908EB91D4938740096E2EA /* ViewController.swift */,
+				46B6F2E71D6F3A120044FB1D /* LastVisitorsViewController.swift */,
 				4603F1C41D67BDB400A80FAA /* DownloadsViewController.swift */,
 				46908EC11D4938740096E2EA /* Assets.xcassets */,
 				46908EC31D4938740096E2EA /* LaunchScreen.storyboard */,
@@ -408,6 +411,7 @@
 			files = (
 				46908EC01D4938740096E2EA /* socialPicket.xcdatamodeld in Sources */,
 				46908EBA1D4938740096E2EA /* ViewController.swift in Sources */,
+				46B6F2E81D6F3A120044FB1D /* LastVisitorsViewController.swift in Sources */,
 				4603F1C51D67BDB400A80FAA /* DownloadsViewController.swift in Sources */,
 				46D94E7F1D6A59B300B264FF /* InAppViewController.swift in Sources */,
 				4699B61B1D55618700A73E23 /* WelcomeViewController.swift in Sources */,
