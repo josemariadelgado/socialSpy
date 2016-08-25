@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>128844071924-2trfr24noos0i72kdb6d1epp534v5ekk.apps.googleusercontent.com</string>
+	<string>128844071924-bslm3lk5g3199oa80kq8gh5f8q43gvf9.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.128844071924-2trfr24noos0i72kdb6d1epp534v5ekk</string>
+	<string>com.googleusercontent.apps.128844071924-bslm3lk5g3199oa80kq8gh5f8q43gvf9</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAFDdhzUB1rWWbxy7maW1teHtYE2ve4W0k</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.JoseMariaDelgado.socialPicket</string>
+	<string>com.JoseMariaDelgado.socialSpy</string>
 	<key>PROJECT_ID</key>
 	<string>social-spy</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:128844071924:ios:3df38e8441ac2ceb</string>
+	<string>1:128844071924:ios:7d338c2430145acc</string>
 	<key>DATABASE_URL</key>
 	<string>https://social-spy.firebaseio.com</string>
 </dict>

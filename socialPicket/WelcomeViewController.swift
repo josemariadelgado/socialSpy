@@ -14,6 +14,7 @@ import SystemConfiguration
 import StoreKit
 import Firebase
 import FirebaseDatabase
+import Alamofire
 
 class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     
@@ -22,10 +23,9 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     var welcomeLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Welcome!"
-        label.font = UIFont.systemFontOfSize(40)
+        label.text = "Welcome"
+        label.font = UIFont.systemFontOfSize(40, weight: UIFontWeightHeavy)
         label.textColor = UIColor(r: 50, g: 50, b: 50)
-        label.textAlignment = NSTextAlignment.Center
         
         return label
     }()
@@ -33,29 +33,22 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     var welcomeLabel2: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Your privacy is protected. \n \n Log in with your Facebook account to see the friends who interacts more with your profile."
-        label.numberOfLines = 6
-        label.font = UIFont.systemFontOfSize(15)
+        label.text = "Log In with Facebook in order to track and follow your detailed friendship interactions."
+        label.numberOfLines = 3
+        label.font = UIFont.systemFontOfSize(15, weight: UIFontWeightSemibold)
         label.textColor = UIColor(r: 50, g: 50, b: 50)
-        label.textAlignment = NSTextAlignment.Center
         
         return label
-    }()
-    
-    var icon: UIImageView = {
-        var image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
     }()
     
     lazy var signInButton: UIButton = {
         var button = UIButton(type: .System)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Log in with Facebook", forState: .Normal)
-        button.titleLabel?.font = UIFont.boldSystemFontOfSize(15)
+        button.setTitle("Log In with Facebook", forState: .Normal)
+        button.titleLabel?.font = UIFont.systemFontOfSize(15, weight: UIFontWeightBold)
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         button.backgroundColor = UIColor(r: 59, g: 89, b: 152)
-        button.layer.cornerRadius = 3
+        button.layer.cornerRadius = 10
         
         button.addTarget(self, action: #selector(handleFacebookLoginClicked), forControlEvents: .TouchUpInside)
         
@@ -64,26 +57,58 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     var bottomBackgroundView: UIView = {
         var view = UIView()
-        view.backgroundColor = UIColor(r: 240, g: 240, b: 240)
+        view.backgroundColor = UIColor(r: 245, g: 245, b: 245)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     
-    var downloadsLabel: UIButton = {
+    lazy var downloadsLabel: UIButton = {
         var button = UIButton(type: .System)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Right
+        button.setTitle(" ", forState: .Normal)
+        
+        button.addTarget(self, action: #selector(openDownloads), forControlEvents: .TouchUpInside)
         
         return button
     }()
     
+    var loadingIndicator: UIActivityIndicatorView  = {
+        var indicator = UIActivityIndicatorView()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.stopAnimating()
+        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
+        indicator.color = UIColor(r: 50, g: 50, b: 50)
+        
+        return indicator
+    }()
+    
+    var downloads: String! = "false"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Alamofire.request(.GET, "https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-117245197647/socialPicket/data.json")
+            .responseJSON { response in
+                
+                if let JSON = response.result.value {
+                    print("JSON: \(JSON)")
+                    let response = JSON as! NSDictionary
+                    
+                    let downloads: String! = String(response.objectForKey("downloads")!)
+                    if downloads == "true"{
+                        self.updateDownloads()
+                        var _ = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(WelcomeViewController.updateDownloads), userInfo: nil, repeats: true)
+                    }
+                }
+        }
         
         if !ViewController.isConnectedToNetwork() {
             let alertController = UIAlertController(title: "Ooops!", message: "You are not connected to the Internet. Please, connect to a network in order to use this app.", preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel,handler: nil))
+            
             self.presentViewController(alertController, animated: true, completion: nil)
         }
         
@@ -104,38 +129,50 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
         }
         
-        updateDownloads()
-        var _ = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(WelcomeViewController.updateDownloads), userInfo: nil, repeats: true)
-        
         navigationController?.navigationBarHidden = true
-        view.backgroundColor = UIColor(r: 255, g: 255, b: 255)
-        
+        view.backgroundColor = UIColor(r: 245, g: 245, b: 245)
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
         navigationController?.navigationBarHidden = true
-        
-        let image = UIImage(named: "spy.png")
-        self.icon = UIImageView(image: image!)
-        self.icon.translatesAutoresizingMaskIntoConstraints = false
+        loadingIndicator.hidden = true
+
         
         view.addSubview(welcomeLabel)
-        view.addSubview(bottomBackgroundView)
-        bottomBackgroundView.addSubview(signInButton)
+        view.addSubview(signInButton)
         view.addSubview(welcomeLabel2)
-        view.addSubview(icon)
+        view.addSubview(loadingIndicator)
         view.addSubview(downloadsLabel)
         setupViews()
+    }
+    
+    func openDownloads() {
+        let downloads = DownloadsViewController()
+        self.presentViewController(downloads, animated: true, completion: nil)
         
     }
     
     func handleFacebookLoginClicked() {
-        let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
+        UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
+            self.loadingIndicator.hidden = false
+            self.loadingIndicator.startAnimating()
+            self.signInButton.alpha = 0.5
+            self.signInButton.enabled = false
+            }, completion:nil)
         
+        let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
         fbLoginManager.logInWithReadPermissions(["email"], handler: { (result, error) -> Void in
             if (error == nil && !result.isCancelled){
-                let fbloginresult : FBSDKLoginManagerLoginResult = result
-                let viewController = ViewController()
-                let navController = UINavigationController(rootViewController: viewController) // Creating a navigation controller with VC1 at the root of the navigation stack.
-                self.presentViewController(navController, animated:true, completion: nil)
-                print(fbloginresult)
+                //                let viewController = ViewController()
+                let buyViewController = BuyViewController()
+                self.navigationController?.pushViewController(buyViewController, animated: true)
+            } else if (result.isCancelled) {
+                UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
+                    self.loadingIndicator.hidden = true
+                    self.loadingIndicator.stopAnimating()
+                    self.signInButton.alpha = 1
+                    self.signInButton.enabled = true
+                    }, completion:nil)
             }
         })
     }
@@ -156,47 +193,41 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     func updateDownloads() {
         self.databaseRef.child("App").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             let firstOpenings = snapshot.value!["firstOpenings"] as! Int
-            
-            self.downloadsLabel.setTitle("App downloads: \(firstOpenings)", forState: .Normal)
-            
+            self.downloadsLabel.setTitle("\(firstOpenings) people have joined", forState: .Normal)
         }) { (error) in
             print(error.localizedDescription)
         }
     }
     
     func setupViews() {
-        welcomeLabel.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        welcomeLabel.topAnchor.constraintEqualToAnchor(view.topAnchor, constant: 50).active = true
+        
+        downloadsLabel.topAnchor.constraintEqualToAnchor(view.topAnchor, constant: 20).active = true
+        downloadsLabel.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -20).active = true
+        downloadsLabel.widthAnchor.constraintEqualToAnchor(view.widthAnchor, constant: -40).active = true
+        
+        welcomeLabel.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: 20).active = true
+        welcomeLabel.bottomAnchor.constraintEqualToAnchor(welcomeLabel2.topAnchor, constant: -10).active = true
         welcomeLabel.widthAnchor.constraintEqualToAnchor(view.widthAnchor).active = true
-        welcomeLabel.heightAnchor.constraintEqualToConstant(50).active = true
         
         welcomeLabel2.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        welcomeLabel2.topAnchor.constraintEqualToAnchor(welcomeLabel.bottomAnchor, constant: 10).active = true
-        welcomeLabel2.widthAnchor.constraintEqualToAnchor(view.widthAnchor, constant: -100).active = true
-        welcomeLabel2.heightAnchor.constraintEqualToConstant(100).active = true
+        welcomeLabel2.bottomAnchor.constraintEqualToAnchor(signInButton.topAnchor, constant: -40).active = true
+        welcomeLabel2.widthAnchor.constraintEqualToAnchor(view.widthAnchor, constant: -40).active = true
         
-        icon.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        icon.bottomAnchor.constraintEqualToAnchor(bottomBackgroundView.topAnchor).active = true
-        icon.widthAnchor.constraintEqualToConstant(100).active = true
-        icon.heightAnchor.constraintEqualToConstant(100).active = true
+        signInButton.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
+        signInButton.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor, constant: -20).active = true
+        signInButton.widthAnchor.constraintEqualToAnchor(view.widthAnchor, constant: -40).active = true
+        signInButton.heightAnchor.constraintEqualToConstant(50).active = true
         
-        bottomBackgroundView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
-        bottomBackgroundView.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
-        bottomBackgroundView.rightAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
-        bottomBackgroundView.heightAnchor.constraintEqualToConstant(100).active = true
-        bottomBackgroundView.widthAnchor.constraintEqualToAnchor(view.widthAnchor).active = true
+        loadingIndicator.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
+        loadingIndicator.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor, constant: -50).active = true
         
-        signInButton.centerXAnchor.constraintEqualToAnchor(bottomBackgroundView.centerXAnchor).active = true
-        signInButton.bottomAnchor.constraintEqualToAnchor(bottomBackgroundView.bottomAnchor, constant: -25).active = true
-        signInButton.widthAnchor.constraintEqualToAnchor(bottomBackgroundView.widthAnchor, constant: -100).active = true
-        signInButton.heightAnchor.constraintEqualToConstant(44).active = true
-        
-        downloadsLabel.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        downloadsLabel.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
-        downloadsLabel.widthAnchor.constraintEqualToAnchor(view.widthAnchor, constant: -50).active = true
-        downloadsLabel.heightAnchor.constraintEqualToConstant(100).active = true
-        
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.loadingIndicator.hidden = true
+        self.loadingIndicator.stopAnimating()
+        self.signInButton.alpha = 1
+        self.signInButton.enabled = true
     }
     
     class func isConnectedToNetwork() -> Bool {

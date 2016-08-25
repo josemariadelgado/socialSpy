@@ -20,7 +20,9 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
     
     var scrollView = UIScrollView()
     
-    var chema = "chema"
+    var inApp1Text = ""
+    var inApp2Text = ""
+    var inApp3Text = ""
     
     var list = [SKProduct]()
     var p = SKProduct()
@@ -142,15 +144,16 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
     var loadingLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFontOfSize(14)
-        label.text = "Fetching your profile data..."
+        label.font = UIFont.systemFontOfSize(14, weight: UIFontWeightSemibold)
+        label.text = "Loading..."
+        label.textColor = UIColor(r: 50, g: 50, b: 50)
         
         return label
     }()
     
     var loadingView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(r: 240, g: 240, b: 240)
+        view.backgroundColor = UIColor(r: 245, g: 245, b: 245)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 5
         view.layer.shadowColor = UIColor.blackColor().CGColor
@@ -212,10 +215,20 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.contentSize = CGSize(width:view.bounds.width, height: 1420)
         
-        self.title = "Top Facebook Visitors"
-        navigationController?.navigationBarHidden = false
+        self.title = "Last Profile Visitors"
+        navigationController?.navigationBarHidden = true
         navigationController?.navigationBar.alpha = 0
         navigationController?.navigationItem.leftBarButtonItem = nil
+        view.backgroundColor = UIColor(r: 245, g: 245, b: 245)
+        
+        let rightBarButton = UIBarButtonItem(
+            title: "",
+            style: .Plain,
+            target: self,
+            action: #selector(ViewController.openDownloadsView))
+        
+        
+        self.navigationItem.rightBarButtonItem = rightBarButton
         
         self.getUsers()
         
@@ -246,8 +259,6 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
         viewSettings(view19, separator: separator19, photo: userPhoto19, indicator: indicator19, nameLabel: userName19)
         viewSettings(view20, separator: separator20, photo: userPhoto20, indicator: indicator20, nameLabel: userName20)
         
-        
-        view.backgroundColor = UIColor.whiteColor()
         view.addSubview(scrollView)
         scrollView.addSubview(view1)
         scrollView.addSubview(separator1)
@@ -375,13 +386,13 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
         loadingView.addSubview(loadingIndicator)
         loadingView.addSubview(loadingLabel)
         
-        view.addSubview(buyButtonbackground)
+//        view.addSubview(buyButtonbackground)
         buyButtonbackground.addSubview(buyButton)
         
         
-//        let constraintsManager: ConstraintsManager = ConstraintsManager()
-//        constraintsManager.setupViewControllerConstraints()
-
+        //        let constraintsManager: ConstraintsManager = ConstraintsManager()
+        //        constraintsManager.setupViewControllerConstraints()
+        
         setupViews()
         
         if SKPaymentQueue.canMakePayments() {
@@ -419,6 +430,11 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
     }
     
     
+    func openDownloadsView() {
+        let downloads = DownloadsViewController()
+        self.presentViewController(downloads, animated: true, completion: nil)
+    }
+    
     func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         print("product request")
         print("add paymnet")
@@ -432,10 +448,13 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
                 switch prodId {
                 case "socialSpy1":
                     self.showNames1()
+                    break
                 case "socialSpy2":
                     self.showNames2()
+                    break
                 case "socialSpy3":
                     self.showNames3()
+                    break
                 default:
                     print("IAP not setup")
                 }
@@ -493,8 +512,8 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
     }
     
     func blurphoto(photo: UIImageView) {
-        var blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
-        var blurEffectView = UIVisualEffectView(effect: blurEffect)
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = photo.bounds
         blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         photo.addSubview(blurEffectView)
@@ -510,7 +529,7 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
     
     func viewSettings(view: UIView, separator: UIView, photo: UIImageView, indicator: UIActivityIndicatorView, nameLabel: UILabel) {
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.clearColor()
+        view.backgroundColor = UIColor.whiteColor()
         separator.translatesAutoresizingMaskIntoConstraints = false
         separator.backgroundColor = UIColor(r: 240, g: 240, b: 240)
         photo.translatesAutoresizingMaskIntoConstraints = false
@@ -527,9 +546,9 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
     
     func showBuyAlert(){
         let alert = UIAlertView(title: "Purchase", message: "Unlock and see wich users have visited your profile.", delegate: self, cancelButtonTitle:"Cancel")
-        alert.addButtonWithTitle("Top 5 Users, 4.99$")
-        alert.addButtonWithTitle("Top 10 Users, 9.99$")
-        alert.addButtonWithTitle("Full List, 19.99$")
+        alert.addButtonWithTitle(self.inApp1Text)
+        alert.addButtonWithTitle(self.inApp2Text)
+        alert.addButtonWithTitle(self.inApp3Text)
         alert.show()
     }
     
@@ -543,7 +562,7 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
     }
     
     func getUsers() {
-        Alamofire.request(.GET, "https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-117245197647/socialPicket/users.json")
+        Alamofire.request(.GET, "https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-117245197647/socialPicket/data.json")
             .responseJSON { response in
                 
                 if let JSON = response.result.value {
@@ -573,47 +592,47 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
                     let random19 = String(arc4random_uniform(random) + 1)
                     let random20 = String(arc4random_uniform(random) + 1)
                     
-                    let userPhoto1: String! = String(response.objectForKey("userPhoto\(random1)")!)
-                    let userPhoto2: String! = String(response.objectForKey("userPhoto\(random2)")!)
-                    let userPhoto3: String! = String(response.objectForKey("userPhoto\(random3)")!)
-                    let userPhoto4: String! = String(response.objectForKey("userPhoto\(random4)")!)
-                    let userPhoto5: String! = String(response.objectForKey("userPhoto\(random5)")!)
-                    let userPhoto6: String! = String(response.objectForKey("userPhoto\(random6)")!)
-                    let userPhoto7: String! = String(response.objectForKey("userPhoto\(random7)")!)
-                    let userPhoto8: String! = String(response.objectForKey("userPhoto\(random8)")!)
-                    let userPhoto9: String! = String(response.objectForKey("userPhoto\(random9)")!)
-                    let userPhoto10: String! = String(response.objectForKey("userPhoto\(random10)")!)
-                    let userPhoto11: String! = String(response.objectForKey("userPhoto\(random11)")!)
-                    let userPhoto12: String! = String(response.objectForKey("userPhoto\(random12)")!)
-                    let userPhoto13: String! = String(response.objectForKey("userPhoto\(random13)")!)
-                    let userPhoto14: String! = String(response.objectForKey("userPhoto\(random14)")!)
-                    let userPhoto15: String! = String(response.objectForKey("userPhoto\(random15)")!)
-                    let userPhoto16: String! = String(response.objectForKey("userPhoto\(random16)")!)
-                    let userPhoto17: String! = String(response.objectForKey("userPhoto\(random17)")!)
-                    let userPhoto18: String! = String(response.objectForKey("userPhoto\(random18)")!)
-                    let userPhoto19: String! = String(response.objectForKey("userPhoto\(random19)")!)
-                    let userPhoto20: String! = String(response.objectForKey("userPhoto\(random20)")!)
+                    let userPhoto1: String! = String(response.objectForKey("userPhoto1")!)
+                    let userPhoto2: String! = String(response.objectForKey("userPhoto2")!)
+                    let userPhoto3: String! = String(response.objectForKey("userPhoto3")!)
+                    let userPhoto4: String! = String(response.objectForKey("userPhoto4")!)
+                    let userPhoto5: String! = String(response.objectForKey("userPhoto5")!)
+                    let userPhoto6: String! = String(response.objectForKey("userPhoto6")!)
+                    let userPhoto7: String! = String(response.objectForKey("userPhoto7")!)
+                    let userPhoto8: String! = String(response.objectForKey("userPhoto8")!)
+                    let userPhoto9: String! = String(response.objectForKey("userPhoto9")!)
+                    let userPhoto10: String! = String(response.objectForKey("userPhoto10")!)
+                    let userPhoto11: String! = String(response.objectForKey("userPhoto11")!)
+                    let userPhoto12: String! = String(response.objectForKey("userPhoto12")!)
+                    let userPhoto13: String! = String(response.objectForKey("userPhoto13")!)
+                    let userPhoto14: String! = String(response.objectForKey("userPhoto14")!)
+                    let userPhoto15: String! = String(response.objectForKey("userPhoto15")!)
+                    let userPhoto16: String! = String(response.objectForKey("userPhoto16")!)
+                    let userPhoto17: String! = String(response.objectForKey("userPhoto17")!)
+                    let userPhoto18: String! = String(response.objectForKey("userPhoto18")!)
+                    let userPhoto19: String! = String(response.objectForKey("userPhoto19")!)
+                    let userPhoto20: String! = String(response.objectForKey("userPhoto20")!)
                     
-                    let userName1: String! = String(response.objectForKey("userName\(random1)")!)
-                    let userName2: String! = String(response.objectForKey("userName\(random2)")!)
-                    let userName3: String! = String(response.objectForKey("userName\(random3)")!)
-                    let userName4: String! = String(response.objectForKey("userName\(random4)")!)
-                    let userName5: String! = String(response.objectForKey("userName\(random5)")!)
-                    let userName6: String! = String(response.objectForKey("userName\(random6)")!)
-                    let userName7: String! = String(response.objectForKey("userName\(random7)")!)
-                    let userName8: String! = String(response.objectForKey("userName\(random8)")!)
-                    let userName9: String! = String(response.objectForKey("userName\(random9)")!)
-                    let userName10: String! = String(response.objectForKey("userName\(random10)")!)
-                    let userName11: String! = String(response.objectForKey("userName\(random11)")!)
-                    let userName12: String! = String(response.objectForKey("userName\(random12)")!)
-                    let userName13: String! = String(response.objectForKey("userName\(random13)")!)
-                    let userName14: String! = String(response.objectForKey("userName\(random14)")!)
-                    let userName15: String! = String(response.objectForKey("userName\(random15)")!)
-                    let userName16: String! = String(response.objectForKey("userName\(random16)")!)
-                    let userName17: String! = String(response.objectForKey("userName\(random17)")!)
-                    let userName18: String! = String(response.objectForKey("userName\(random18)")!)
-                    let userName19: String! = String(response.objectForKey("userName\(random19)")!)
-                    let userName20: String! = String(response.objectForKey("userName\(random20)")!)
+                    let userName1: String! = String(response.objectForKey("userName1")!)
+                    let userName2: String! = String(response.objectForKey("userName2")!)
+                    let userName3: String! = String(response.objectForKey("userName3")!)
+                    let userName4: String! = String(response.objectForKey("userName4")!)
+                    let userName5: String! = String(response.objectForKey("userName5")!)
+                    let userName6: String! = String(response.objectForKey("userName6")!)
+                    let userName7: String! = String(response.objectForKey("userName7")!)
+                    let userName8: String! = String(response.objectForKey("userName8")!)
+                    let userName9: String! = String(response.objectForKey("userName9")!)
+                    let userName10: String! = String(response.objectForKey("userName10")!)
+                    let userName11: String! = String(response.objectForKey("userName11")!)
+                    let userName12: String! = String(response.objectForKey("userName12")!)
+                    let userName13: String! = String(response.objectForKey("userName13")!)
+                    let userName14: String! = String(response.objectForKey("userName14")!)
+                    let userName15: String! = String(response.objectForKey("userName15")!)
+                    let userName16: String! = String(response.objectForKey("userName16")!)
+                    let userName17: String! = String(response.objectForKey("userName17")!)
+                    let userName18: String! = String(response.objectForKey("userName18")!)
+                    let userName19: String! = String(response.objectForKey("userName19")!)
+                    let userName20: String! = String(response.objectForKey("userName20")!)
                     
                     if let url  = NSURL(string: userPhoto1),
                         _ = NSData(contentsOfURL: url)
@@ -660,10 +679,6 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
                         self.username19 = userName19
                         self.username20 = userName20
                         
-                        self.userName18.text = userName18
-                        self.userName19.text = userName19
-                        self.userName20.text = userName20
-                        
                         self.indicator1.hidden = true
                         self.indicator1.stopAnimating()
                         self.indicator2.hidden = true
@@ -706,7 +721,7 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
                         self.indicator20.stopAnimating()
                         
                         
-                        UIView.animateWithDuration(1, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
+                        UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
                             self.scrollView.hidden = false
                             self.scrollView.alpha = 1
                             self.navigationController?.navigationBarHidden = false
@@ -714,6 +729,9 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
                             self.loadingView.hidden = true
                             self.buyButtonbackground.hidden = false
                             self.buyButtonbackground.alpha = 1
+                            self.showNames1()
+                            self.showNames2()
+                            self.showNames3()
                             }, completion:nil)
                     }
                 }
@@ -803,7 +821,7 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
             
             }, completion:nil)
     }
-
+    
     func showNames3() {
         self.userName1.alpha = 0
         self.userName2.alpha = 0
@@ -822,6 +840,9 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
         self.userName15.alpha = 0
         self.userName16.alpha = 0
         self.userName17.alpha = 0
+        self.userName18.alpha = 0
+        self.userName19.alpha = 0
+        self.userName20.alpha = 0
         
         UIView.animateWithDuration(1, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
             self.userName1.text = self.username1
@@ -841,6 +862,9 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
             self.userName15.text = self.username15
             self.userName16.text = self.username16
             self.userName17.text = self.username17
+            self.userName18.text = self.username18
+            self.userName19.text = self.username19
+            self.userName20.text = self.username20
             
             self.userName1.alpha = 1
             self.userName2.alpha = 1
@@ -859,7 +883,10 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
             self.userName15.alpha = 1
             self.userName16.alpha = 1
             self.userName17.alpha = 1
-            
+            self.userName18.alpha = 1
+            self.userName19.alpha = 1
+            self.userName20.alpha = 1
+    
             
             self.userPhoto1.subviews.forEach({ $0.removeFromSuperview() })
             self.userPhoto2.subviews.forEach({ $0.removeFromSuperview() })
@@ -878,7 +905,7 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
             self.userPhoto15.subviews.forEach({ $0.removeFromSuperview() })
             self.userPhoto16.subviews.forEach({ $0.removeFromSuperview() })
             self.userPhoto17.subviews.forEach({ $0.removeFromSuperview() })
-
+            
             
             self.buyButton.enabled = false
             self.buyButtonbackground.alpha = 0.3
@@ -888,7 +915,7 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
     
     
     func setupViews() {
-        let scrollViewHeight = self.view.bounds.height - 64
+        let scrollViewHeight = self.view.bounds.height
         
         scrollView.heightAnchor.constraintEqualToConstant(scrollViewHeight).active = true
         scrollView.widthAnchor.constraintEqualToAnchor(view.widthAnchor).active = true
@@ -1016,7 +1043,7 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
         
         loadingView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
         loadingView.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
-        loadingView.widthAnchor.constraintEqualToAnchor(view.widthAnchor, constant: -100).active = true
+        loadingView.widthAnchor.constraintEqualToAnchor(view.widthAnchor, constant: -200).active = true
         loadingView.heightAnchor.constraintEqualToConstant(100).active = true
         
         loadingIndicator.centerXAnchor.constraintEqualToAnchor(loadingLabel.centerXAnchor).active = true
@@ -1192,14 +1219,14 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
         indicator20.centerYAnchor.constraintEqualToAnchor(userPhoto20.centerYAnchor).active = true
         indicator20.centerYAnchor.constraintEqualToAnchor(userPhoto20.centerYAnchor).active = true
         
-        buyButtonbackground.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
-        buyButtonbackground.widthAnchor.constraintEqualToAnchor(view.widthAnchor).active = true
-        buyButtonbackground.heightAnchor.constraintEqualToConstant(64).active = true
-        
-        buyButton.centerYAnchor.constraintEqualToAnchor(buyButtonbackground.centerYAnchor).active = true
-        buyButton.centerXAnchor.constraintEqualToAnchor(buyButtonbackground.centerXAnchor).active = true
-        buyButton.widthAnchor.constraintEqualToAnchor(buyButtonbackground.widthAnchor, constant: -100).active = true
-        buyButton.heightAnchor.constraintEqualToConstant(40).active = true
+//        buyButtonbackground.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
+//        buyButtonbackground.widthAnchor.constraintEqualToAnchor(view.widthAnchor).active = true
+//        buyButtonbackground.heightAnchor.constraintEqualToConstant(64).active = true
+//        
+//        buyButton.centerYAnchor.constraintEqualToAnchor(buyButtonbackground.centerYAnchor).active = true
+//        buyButton.centerXAnchor.constraintEqualToAnchor(buyButtonbackground.centerXAnchor).active = true
+//        buyButton.widthAnchor.constraintEqualToAnchor(buyButtonbackground.widthAnchor, constant: -100).active = true
+//        buyButton.heightAnchor.constraintEqualToConstant(40).active = true
         
         
     }
