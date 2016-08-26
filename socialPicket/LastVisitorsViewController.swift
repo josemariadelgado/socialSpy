@@ -16,33 +16,28 @@ class LastVisitorsViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         
         tableView = UITableView(frame: UIScreen.mainScreen().bounds, style: UITableViewStyle.Plain)
-        tableView.delegate      =   self
-        tableView.dataSource    =   self
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(self.tableView)
-        
-        
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return animals.count
-        
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-    {
-        
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:UITableViewCell=UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         cell.textLabel!.text = animals [indexPath.row]
+        
+        let image: UIImage = UIImage(named: "icon170x170.png")!
+        cell.imageView!.image = image
+        cell.imageView?.translatesAutoresizingMaskIntoConstraints = false
+        
         return cell;
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-    {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print(animals[indexPath.row])
-        
     }
-
-  
 }

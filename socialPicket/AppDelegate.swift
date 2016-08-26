@@ -17,13 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
-    {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = UINavigationController(rootViewController: WelcomeViewController())
+        window?.rootViewController = UINavigationController(rootViewController: BuyViewController())
         
         FIRMessaging.messaging().subscribeToTopic("/topics/test")
         
@@ -34,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
-        
+                
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
@@ -62,33 +61,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Print full message.
         print("%@", userInfo)
-    }
-    
-    func grabStoryboard() -> UIStoryboard {
-        // determine screen size
-        let screenHeight = UIScreen.mainScreen().bounds.size.height
-        var storyboard: UIStoryboard! = nil
-        
-        switch (screenHeight)
-        {
-        // iPhone 4s
-        case 480:
-            storyboard = UIStoryboard(name: "4s", bundle: nil)
-        // iPhone 5s
-        case 568:
-            storyboard = UIStoryboard(name: "5s", bundle: nil)
-        // iPhone 6
-        case 667:
-            storyboard = UIStoryboard(name: "6s", bundle: nil)
-        // iPhone 6 Plus
-        case 736:
-            storyboard = UIStoryboard(name: "6s-Plus", bundle: nil)
-        default:
-            // it's an iPad
-            storyboard = UIStoryboard(name: "6s", bundle: nil)
-        }
-        
-        return storyboard
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool

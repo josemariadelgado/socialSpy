@@ -196,7 +196,7 @@ class InAppViewController: UIViewController, SKProductsRequestDelegate, SKPaymen
             print(product.productIdentifier)
             print(product.localizedTitle)
             print(product.localizedDescription)
-            print(product.price)
+            print("\(product.price)\n")
             list.append(product )
         }
     }

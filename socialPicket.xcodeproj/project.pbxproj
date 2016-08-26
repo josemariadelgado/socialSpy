@@ -23,6 +23,7 @@
 		46908EEC1D4938920096E2EA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46908EEA1D4938920096E2EA /* FBSDKLoginKit.framework */; };
 		4699B61B1D55618700A73E23 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4699B61A1D55618700A73E23 /* WelcomeViewController.swift */; };
 		46B6F2E81D6F3A120044FB1D /* LastVisitorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B6F2E71D6F3A120044FB1D /* LastVisitorsViewController.swift */; };
+		46B6F2EA1D6F49A20044FB1D /* icon170x170.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B6F2E91D6F49A20044FB1D /* icon170x170.png */; };
 		46D94E7F1D6A59B300B264FF /* InAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D94E7E1D6A59B300B264FF /* InAppViewController.swift */; };
 		46D94E811D6B1B0600B264FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46D94E801D6B1B0600B264FF /* GoogleService-Info.plist */; };
 		46F54E551D64E8BF00D11610 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F54E541D64E8BF00D11610 /* StoreKit.framework */; };
@@ -82,6 +83,7 @@
 		46908EEA1D4938920096E2EA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../../Downloads/FacebookSDKs-iOS-4/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		4699B61A1D55618700A73E23 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		46B6F2E71D6F3A120044FB1D /* LastVisitorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastVisitorsViewController.swift; sourceTree = "<group>"; };
+		46B6F2E91D6F49A20044FB1D /* icon170x170.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon170x170.png; sourceTree = "<group>"; };
 		46D94E7E1D6A59B300B264FF /* InAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppViewController.swift; sourceTree = "<group>"; };
 		46D94E801D6B1B0600B264FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46F54E541D64E8BF00D11610 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -123,6 +125,7 @@
 		46908EAB1D4938740096E2EA = {
 			isa = PBXGroup;
 			children = (
+				46B6F2E91D6F49A20044FB1D /* icon170x170.png */,
 				46D94E801D6B1B0600B264FF /* GoogleService-Info.plist */,
 				46908EE81D49387F0096E2EA /* Frameworks */,
 				46908EB61D4938740096E2EA /* socialPicket */,
@@ -324,6 +327,7 @@
 				46908EC51D4938740096E2EA /* LaunchScreen.storyboard in Resources */,
 				46908EC21D4938740096E2EA /* Assets.xcassets in Resources */,
 				46D94E811D6B1B0600B264FF /* GoogleService-Info.plist in Resources */,
+				46B6F2EA1D6F49A20044FB1D /* icon170x170.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

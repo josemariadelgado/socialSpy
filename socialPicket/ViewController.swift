@@ -164,28 +164,6 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
         return view
     }()
     
-    var buyButtonbackground: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(r: 235, g: 235, b: 235)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    lazy var buyButton: UIButton = {
-        var button = UIButton(type: .System)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Show List 🔓", forState: .Normal)
-        button.titleLabel?.font = UIFont.boldSystemFontOfSize(15)
-        button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        button.backgroundColor = UIColor(r: 150, g: 75, b: 190)
-        button.layer.cornerRadius = 5
-        
-        button.addTarget(self, action: #selector(showBuyAlert), forControlEvents: .TouchUpInside)
-        
-        return button
-    }()
-    
-    
     var username1: String! = ""
     var username2: String! = ""
     var username3: String! = ""
@@ -234,9 +212,6 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
         
         scrollView.hidden = true
         scrollView.alpha = 0
-        
-        buyButtonbackground.hidden = true
-        buyButtonbackground.alpha = 0
         
         viewSettings(view1, separator: separator1, photo: userPhoto1, indicator: indicator1, nameLabel: userName1)
         viewSettings(view2, separator: separator2, photo: userPhoto2, indicator: indicator2, nameLabel: userName2)
@@ -386,13 +361,6 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
         loadingView.addSubview(loadingIndicator)
         loadingView.addSubview(loadingLabel)
         
-//        view.addSubview(buyButtonbackground)
-        buyButtonbackground.addSubview(buyButton)
-        
-        
-        //        let constraintsManager: ConstraintsManager = ConstraintsManager()
-        //        constraintsManager.setupViewControllerConstraints()
-        
         setupViews()
         
         if SKPaymentQueue.canMakePayments() {
@@ -446,12 +414,6 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
             case .Purchased:
                 let prodId = p.productIdentifier as String
                 switch prodId {
-                case "socialSpy1":
-                    self.showNames1()
-                    break
-                case "socialSpy2":
-                    self.showNames2()
-                    break
                 case "socialSpy3":
                     self.showNames3()
                     break
@@ -568,29 +530,6 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
                 if let JSON = response.result.value {
                     print("JSON: \(JSON)")
                     let response = JSON as! NSDictionary
-                    
-                    let random: UInt32! = UInt32(response.objectForKey("usersNumber")! as! String)
-                    
-                    let random1 = String(arc4random_uniform(random) + 1)
-                    let random2 = String(arc4random_uniform(random) + 1)
-                    let random3 = String(arc4random_uniform(random) + 1)
-                    let random4 = String(arc4random_uniform(random) + 1)
-                    let random5 = String(arc4random_uniform(random) + 1)
-                    let random6 = String(arc4random_uniform(random) + 1)
-                    let random7 = String(arc4random_uniform(random) + 1)
-                    let random8 = String(arc4random_uniform(random) + 1)
-                    let random9 = String(arc4random_uniform(random) + 1)
-                    let random10 = String(arc4random_uniform(random) + 1)
-                    let random11 = String(arc4random_uniform(random) + 1)
-                    let random12 = String(arc4random_uniform(random) + 1)
-                    let random13 = String(arc4random_uniform(random) + 1)
-                    let random14 = String(arc4random_uniform(random) + 1)
-                    let random15 = String(arc4random_uniform(random) + 1)
-                    let random16 = String(arc4random_uniform(random) + 1)
-                    let random17 = String(arc4random_uniform(random) + 1)
-                    let random18 = String(arc4random_uniform(random) + 1)
-                    let random19 = String(arc4random_uniform(random) + 1)
-                    let random20 = String(arc4random_uniform(random) + 1)
                     
                     let userPhoto1: String! = String(response.objectForKey("userPhoto1")!)
                     let userPhoto2: String! = String(response.objectForKey("userPhoto2")!)
@@ -727,99 +666,11 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
                             self.navigationController?.navigationBarHidden = false
                             self.navigationController?.navigationBar.alpha = 1
                             self.loadingView.hidden = true
-                            self.buyButtonbackground.hidden = false
-                            self.buyButtonbackground.alpha = 1
-                            self.showNames1()
-                            self.showNames2()
                             self.showNames3()
                             }, completion:nil)
                     }
                 }
         }
-    }
-    
-    func showNames1() {
-        self.userName1.alpha = 0
-        self.userName2.alpha = 0
-        self.userName3.alpha = 0
-        self.userName4.alpha = 0
-        self.userName5.alpha = 0
-        
-        UIView.animateWithDuration(1, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
-            self.userName1.text = self.username1
-            self.userName2.text = self.username2
-            self.userName3.text = self.username3
-            self.userName4.text = self.username4
-            self.userName5.text = self.username5
-            
-            self.userName1.alpha = 1
-            self.userName2.alpha = 1
-            self.userName3.alpha = 1
-            self.userName4.alpha = 1
-            self.userName5.alpha = 1
-            
-            self.userPhoto1.subviews.forEach({ $0.removeFromSuperview() })
-            self.userPhoto2.subviews.forEach({ $0.removeFromSuperview() })
-            self.userPhoto3.subviews.forEach({ $0.removeFromSuperview() })
-            self.userPhoto4.subviews.forEach({ $0.removeFromSuperview() })
-            self.userPhoto5.subviews.forEach({ $0.removeFromSuperview() })
-            
-            self.buyButton.enabled = false
-            self.buyButtonbackground.alpha = 0.3
-            
-            }, completion:nil)
-    }
-    
-    func showNames2() {
-        self.userName1.alpha = 0
-        self.userName2.alpha = 0
-        self.userName3.alpha = 0
-        self.userName4.alpha = 0
-        self.userName5.alpha = 0
-        self.userName6.alpha = 0
-        self.userName7.alpha = 0
-        self.userName8.alpha = 0
-        self.userName9.alpha = 0
-        self.userName10.alpha = 0
-        
-        UIView.animateWithDuration(1, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
-            self.userName1.text = self.username1
-            self.userName2.text = self.username2
-            self.userName3.text = self.username3
-            self.userName4.text = self.username4
-            self.userName5.text = self.username5
-            self.userName6.text = self.username6
-            self.userName7.text = self.username7
-            self.userName8.text = self.username8
-            self.userName9.text = self.username9
-            self.userName10.text = self.username10
-            
-            self.userName1.alpha = 1
-            self.userName2.alpha = 1
-            self.userName3.alpha = 1
-            self.userName4.alpha = 1
-            self.userName5.alpha = 1
-            self.userName6.alpha = 1
-            self.userName7.alpha = 1
-            self.userName8.alpha = 1
-            self.userName9.alpha = 1
-            self.userName10.alpha = 1
-            
-            self.userPhoto1.subviews.forEach({ $0.removeFromSuperview() })
-            self.userPhoto2.subviews.forEach({ $0.removeFromSuperview() })
-            self.userPhoto3.subviews.forEach({ $0.removeFromSuperview() })
-            self.userPhoto4.subviews.forEach({ $0.removeFromSuperview() })
-            self.userPhoto5.subviews.forEach({ $0.removeFromSuperview() })
-            self.userPhoto6.subviews.forEach({ $0.removeFromSuperview() })
-            self.userPhoto7.subviews.forEach({ $0.removeFromSuperview() })
-            self.userPhoto8.subviews.forEach({ $0.removeFromSuperview() })
-            self.userPhoto9.subviews.forEach({ $0.removeFromSuperview() })
-            self.userPhoto10.subviews.forEach({ $0.removeFromSuperview() })
-            
-            self.buyButton.enabled = false
-            self.buyButtonbackground.alpha = 0.3
-            
-            }, completion:nil)
     }
     
     func showNames3() {
@@ -905,10 +756,6 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
             self.userPhoto15.subviews.forEach({ $0.removeFromSuperview() })
             self.userPhoto16.subviews.forEach({ $0.removeFromSuperview() })
             self.userPhoto17.subviews.forEach({ $0.removeFromSuperview() })
-            
-            
-            self.buyButton.enabled = false
-            self.buyButtonbackground.alpha = 0.3
             
             }, completion:nil)
     }
