@@ -192,6 +192,42 @@ class BuyViewController: UIViewController {
         helpButton.alpha = 0
         verticalSeparator.alpha = 0
         
+        
+        let token = FBSDKAccessToken.currentAccessToken().tokenString
+        
+        
+        let myURLString = "https://graph.facebook.com/v2.0/me/invitable_friends?access_token=\(token)"
+        
+        var myhtml: String!  = ""
+        
+        if let myURL = NSURL(string: myURLString) {
+            do {
+                var myHTMLString = try String(contentsOfURL: myURL, encoding: NSUTF8StringEncoding)
+                myhtml = myHTMLString
+            } catch {
+                print("Error : \(error)")
+            }
+        } else {
+            print("Error: \(myURLString) doesn't  URL")
+        }
+        
+        
+        Alamofire.request(.GET, myURLString)
+            .responseJSON { response in
+                
+                if let JSON = response.result.value {
+                    print("JSON: \(JSON)")
+                    let response = JSON as! NSDictionary
+                    
+                    
+                    
+                }
+                
+        }
+        
+        
+        
+        
         view.backgroundColor = UIColor(r: 245, g: 245, b: 245)
         self.navigationController?.navigationBarHidden = true
         let backItem = UIBarButtonItem()
@@ -207,6 +243,7 @@ class BuyViewController: UIViewController {
         setPhotosVisualSettings()
         setupViewConstraints()
         
+        
         self.getUsers()
     }
     
@@ -215,7 +252,7 @@ class BuyViewController: UIViewController {
             .responseJSON { response in
                 
                 if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
+                    //                    print("JSON: \(JSON)")
                     let response = JSON as! NSDictionary
                     
                     if let userPhoto1: String! = String(response.objectForKey("blur1")!),
@@ -259,6 +296,9 @@ class BuyViewController: UIViewController {
         if let url  = NSURL(string: url), data = NSData(contentsOfURL: url) {
             image.image = UIImage(data: data)
         }
+        
+        
+        
     }
     
     func showAllListButtonClicked() {

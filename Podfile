@@ -7,6 +7,7 @@ target 'socialPicket' do
 pod 'Firebase'
 pod 'Firebase/Messaging'
 pod 'FirebaseDatabase'
+
 end
 
 target 'socialPicketTests' do

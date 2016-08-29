@@ -110,11 +110,11 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
         super.viewDidLoad()
         downloadsLabel.enabled = false
         
+        
         iconTest.font = UIFont(name: "icomoon", size: 300)
         iconTest.textColor = UIColor(r: 20, g: 123, b: 200)
         iconTest.textAlignment = NSTextAlignment.Center
         iconTest.translatesAutoresizingMaskIntoConstraints = false
-        
         iconTest.text = "\u{e902}"
         
         //        view.addSubview(iconTest)
@@ -127,7 +127,7 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
                 .responseJSON { response in
                     
                     if let JSON = response.result.value {
-                        print("JSON: \(JSON)")
+//                        print("JSON: \(JSON)")
                         let response = JSON as! NSDictionary
                         
                         let downloads: String! = String(response.objectForKey("downloads")!)
@@ -187,7 +187,7 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
             }, completion:nil)
         
         let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
-        fbLoginManager.logInWithReadPermissions(["email"], handler: { (result, error) -> Void in
+        fbLoginManager.logInWithReadPermissions(["email", "user_friends"], handler: { (result, error) -> Void in
             if (error == nil && !result.isCancelled){
                 //                let viewController = ViewController()
                 let buyViewController = BuyViewController()

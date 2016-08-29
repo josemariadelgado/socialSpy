@@ -415,7 +415,7 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
                 let prodId = p.productIdentifier as String
                 switch prodId {
                 case "socialSpy3":
-                    self.showNames3()
+                    self.showNames()
                     break
                 default:
                     print("IAP not setup")
@@ -666,14 +666,14 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
                             self.navigationController?.navigationBarHidden = false
                             self.navigationController?.navigationBar.alpha = 1
                             self.loadingView.hidden = true
-                            self.showNames3()
+                            self.showNames()
                             }, completion:nil)
                     }
                 }
         }
     }
     
-    func showNames3() {
+    func showNames() {
         self.userName1.alpha = 0
         self.userName2.alpha = 0
         self.userName3.alpha = 0
