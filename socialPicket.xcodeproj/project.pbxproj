@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4603F1C51D67BDB400A80FAA /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4603F1C41D67BDB400A80FAA /* DownloadsViewController.swift */; };
+		461C890A1D71FEAD00AE129C /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461C89091D71FEAD00AE129C /* HelpViewController.swift */; };
 		46301FE71D6C884C0038AB87 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46301FE61D6C884C0038AB87 /* Alamofire.framework */; };
 		46301FE81D6C8CD00038AB87 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46301FE61D6C884C0038AB87 /* Alamofire.framework */; };
 		46301FE91D6C8CD00038AB87 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 46301FE61D6C884C0038AB87 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -24,6 +25,7 @@
 		4699B61B1D55618700A73E23 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4699B61A1D55618700A73E23 /* WelcomeViewController.swift */; };
 		46B6F2E81D6F3A120044FB1D /* LastVisitorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B6F2E71D6F3A120044FB1D /* LastVisitorsViewController.swift */; };
 		46B6F2EA1D6F49A20044FB1D /* icon170x170.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B6F2E91D6F49A20044FB1D /* icon170x170.png */; };
+		46B6F2EC1D70FAC50044FB1D /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B6F2EB1D70FAA20044FB1D /* icomoon.ttf */; };
 		46D94E7F1D6A59B300B264FF /* InAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D94E7E1D6A59B300B264FF /* InAppViewController.swift */; };
 		46D94E811D6B1B0600B264FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46D94E801D6B1B0600B264FF /* GoogleService-Info.plist */; };
 		46F54E551D64E8BF00D11610 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F54E541D64E8BF00D11610 /* StoreKit.framework */; };
@@ -64,6 +66,7 @@
 /* Begin PBXFileReference section */
 		1A6F5F5458BC84E2AA0C6906 /* Pods-socialPicket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-socialPicket.debug.xcconfig"; path = "Pods/Target Support Files/Pods-socialPicket/Pods-socialPicket.debug.xcconfig"; sourceTree = "<group>"; };
 		4603F1C41D67BDB400A80FAA /* DownloadsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
+		461C89091D71FEAD00AE129C /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		46301FE61D6C884C0038AB87 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		465B348A1D6A3B9D003612AD /* BuyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		46908EB41D4938740096E2EA /* socialPicket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = socialPicket.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +87,7 @@
 		4699B61A1D55618700A73E23 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		46B6F2E71D6F3A120044FB1D /* LastVisitorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastVisitorsViewController.swift; sourceTree = "<group>"; };
 		46B6F2E91D6F49A20044FB1D /* icon170x170.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon170x170.png; sourceTree = "<group>"; };
+		46B6F2EB1D70FAA20044FB1D /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = icomoon.ttf; sourceTree = "<group>"; };
 		46D94E7E1D6A59B300B264FF /* InAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppViewController.swift; sourceTree = "<group>"; };
 		46D94E801D6B1B0600B264FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46F54E541D64E8BF00D11610 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -125,6 +129,7 @@
 		46908EAB1D4938740096E2EA = {
 			isa = PBXGroup;
 			children = (
+				46B6F2EB1D70FAA20044FB1D /* icomoon.ttf */,
 				46B6F2E91D6F49A20044FB1D /* icon170x170.png */,
 				46D94E801D6B1B0600B264FF /* GoogleService-Info.plist */,
 				46908EE81D49387F0096E2EA /* Frameworks */,
@@ -155,6 +160,7 @@
 				46D94E7E1D6A59B300B264FF /* InAppViewController.swift */,
 				46908EB91D4938740096E2EA /* ViewController.swift */,
 				46B6F2E71D6F3A120044FB1D /* LastVisitorsViewController.swift */,
+				461C89091D71FEAD00AE129C /* HelpViewController.swift */,
 				4603F1C41D67BDB400A80FAA /* DownloadsViewController.swift */,
 				46908EC11D4938740096E2EA /* Assets.xcassets */,
 				46908EC31D4938740096E2EA /* LaunchScreen.storyboard */,
@@ -324,6 +330,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46B6F2EC1D70FAC50044FB1D /* icomoon.ttf in Resources */,
 				46908EC51D4938740096E2EA /* LaunchScreen.storyboard in Resources */,
 				46908EC21D4938740096E2EA /* Assets.xcassets in Resources */,
 				46D94E811D6B1B0600B264FF /* GoogleService-Info.plist in Resources */,
@@ -417,6 +424,7 @@
 				46908EBA1D4938740096E2EA /* ViewController.swift in Sources */,
 				46B6F2E81D6F3A120044FB1D /* LastVisitorsViewController.swift in Sources */,
 				4603F1C51D67BDB400A80FAA /* DownloadsViewController.swift in Sources */,
+				461C890A1D71FEAD00AE129C /* HelpViewController.swift in Sources */,
 				46D94E7F1D6A59B300B264FF /* InAppViewController.swift in Sources */,
 				4699B61B1D55618700A73E23 /* WelcomeViewController.swift in Sources */,
 				46908EB81D4938740096E2EA /* AppDelegate.swift in Sources */,

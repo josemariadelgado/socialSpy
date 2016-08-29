@@ -12,7 +12,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class BuyViewController: UIViewController {
-
+    
     var titleLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -22,8 +22,6 @@ class BuyViewController: UIViewController {
         
         return label
     }()
-    
-    var amos = String()
     
     var lastUpdatedLabel: UILabel = {
         var label = UILabel()
@@ -63,7 +61,7 @@ class BuyViewController: UIViewController {
         button.backgroundColor = UIColor(r: 115, g: 230, b: 135)
         button.layer.cornerRadius = 5
         
-        button.addTarget(self, action: #selector(showAllList), forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(showAllListButtonClicked), forControlEvents: .TouchUpInside)
         
         return button
     }()
@@ -96,7 +94,7 @@ class BuyViewController: UIViewController {
         button.backgroundColor = UIColor(r: 115, g: 230, b: 135)
         button.layer.cornerRadius = 5
         
-        button.addTarget(self, action: #selector(showAllList), forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(showAllListButtonClicked), forControlEvents: .TouchUpInside)
         
         return button
     }()
@@ -136,15 +134,35 @@ class BuyViewController: UIViewController {
     lazy var logoutbutton: UIButton = {
         var button = UIButton(type: .System)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("←  Log Out", forState: .Normal)
-        button.titleLabel?.font = UIFont.systemFontOfSize(15, weight: UIFontWeightBold)
-        button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        button.backgroundColor = UIColor(r: 234, g: 70, b: 70)
-        button.layer.cornerRadius = 5
+        button.setTitle("Log Out", forState: .Normal)
+        button.titleLabel?.font = UIFont.systemFontOfSize(15, weight: UIFontWeightRegular)
+        button.setTitleColor(UIColor(r: 0, g: 83, b: 172), forState: .Normal)
+        button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         
         button.addTarget(self, action: #selector(showLogoutAlert), forControlEvents: .TouchUpInside)
         
         return button
+    }()
+    
+    lazy var helpButton: UIButton = {
+        var button = UIButton(type: .System)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Help", forState: .Normal)
+        button.titleLabel?.font = UIFont.systemFontOfSize(15, weight: UIFontWeightRegular)
+        button.setTitleColor(UIColor(r: 0, g: 83, b: 172), forState: .Normal)
+        button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
+        
+        button.addTarget(self, action: #selector(openHelp), forControlEvents: .TouchUpInside)
+        
+        return button
+    }()
+    
+    var verticalSeparator: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(r: 200, g: 200, b: 200)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
     }()
     
     var scrollView = UIScrollView()
@@ -170,6 +188,9 @@ class BuyViewController: UIViewController {
         
         scrollView.hidden = true
         scrollView.alpha = 0
+        logoutbutton.alpha = 0
+        helpButton.alpha = 0
+        verticalSeparator.alpha = 0
         
         view.backgroundColor = UIColor(r: 245, g: 245, b: 245)
         self.navigationController?.navigationBarHidden = true
@@ -177,18 +198,105 @@ class BuyViewController: UIViewController {
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
         
-        visitorsBackgroundView.alpha = 0
-        likeMostView.alpha = 0
-        titleLabel.alpha = 0
-        lastUpdatedLabel.alpha = 0
-        logoutbutton.alpha = 0
-        
         let todaysDate:NSDate = NSDate()
         let dateFormatter:NSDateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy, HH:mm"
         let dateInFormat:String = dateFormatter.stringFromDate(todaysDate)
         lastUpdatedLabel.text = "Last update: \(dateInFormat)"
         
+        setPhotosVisualSettings()
+        setupViewConstraints()
+        
+        self.getUsers()
+    }
+    
+    func getUsers() {
+        Alamofire.request(.GET, "https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-117245197647/socialPicket/data.json")
+            .responseJSON { response in
+                
+                if let JSON = response.result.value {
+                    print("JSON: \(JSON)")
+                    let response = JSON as! NSDictionary
+                    
+                    if let userPhoto1: String! = String(response.objectForKey("blur1")!),
+                        userPhoto2: String! = String(response.objectForKey("blur2")!),
+                        userPhoto3: String! = String(response.objectForKey("blur3")!),
+                        userPhoto4: String! = String(response.objectForKey("blur4")!),
+                        userPhoto5: String! = String(response.objectForKey("blur5")!),
+                        userPhoto6: String! = String(response.objectForKey("blur6")!),
+                        userPhoto7: String! = String(response.objectForKey("blur7")!),
+                        userPhoto8: String! = String(response.objectForKey("blur8")!),
+                        userPhoto9: String! = String(response.objectForKey("blur9")!),
+                        userPhoto10: String! = String(response.objectForKey("blur10")!) {
+                        
+                        self.setUserPhoto(userPhoto1, image: self.userPhoto1)
+                        self.setUserPhoto(userPhoto2, image: self.userPhoto2)
+                        self.setUserPhoto(userPhoto3, image: self.userPhoto3)
+                        self.setUserPhoto(userPhoto4, image: self.userPhoto4)
+                        self.setUserPhoto(userPhoto5, image: self.userPhoto5)
+                        self.setUserPhoto(userPhoto6, image: self.userPhoto6)
+                        self.setUserPhoto(userPhoto7, image: self.userPhoto7)
+                        self.setUserPhoto(userPhoto8, image: self.userPhoto8)
+                        self.setUserPhoto(userPhoto9, image: self.userPhoto9)
+                        self.setUserPhoto(userPhoto10, image: self.userPhoto10)
+                        
+                        UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
+                            self.scrollView.hidden = false
+                            self.scrollView.alpha = 1
+                            self.logoutbutton.alpha = 1
+                            self.helpButton.alpha = 1
+                            self.verticalSeparator.alpha = 1
+                            self.loadingView.hidden = true
+                            self.loadingIndicator.stopAnimating()
+                            }, completion:nil)
+                    }
+                    
+                }
+        }
+    }
+    
+    func setUserPhoto(url: String, image: UIImageView) {
+        if let url  = NSURL(string: url), data = NSData(contentsOfURL: url) {
+            image.image = UIImage(data: data)
+        }
+    }
+    
+    func showAllListButtonClicked() {
+        let premium = NSUserDefaults.standardUserDefaults().boolForKey("premiumMember")
+        let inApp = InAppViewController()
+        let list = ViewController()
+        self.navigationController?.pushViewController(premium ? list : inApp, animated: true)
+    }
+    
+    func showLogoutAlert(sender: AnyObject) {
+        let alertController = UIAlertController(title: nil, message: "Are you sure you want to log out?", preferredStyle: .ActionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in}
+        alertController.addAction(cancelAction)
+        let destroyAction = UIAlertAction(title: "Log Out", style: .Destructive) { (action) in
+            self.logout()
+        }
+        
+        alertController.addAction(destroyAction)
+        self.presentViewController(alertController, animated: true) {}
+    }
+    
+    func logout() {
+        let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
+        fbLoginManager.logOut()
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func openHelp() {
+        let help = HelpViewController()
+        self.presentViewController(help, animated: true, completion: nil)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = true
+    }
+    
+    
+    func setPhotosVisualSettings() {
         userPhoto1.translatesAutoresizingMaskIntoConstraints = false
         userPhoto2.translatesAutoresizingMaskIntoConstraints = false
         userPhoto3.translatesAutoresizingMaskIntoConstraints = false
@@ -212,6 +320,10 @@ class BuyViewController: UIViewController {
         userPhoto8.layer.cornerRadius = 5
         userPhoto9.layer.cornerRadius = 5
         userPhoto10.layer.cornerRadius = 5
+    }
+    
+    func setupViewConstraints() {
+        let scrollViewHeight = self.view.bounds.height - 70
         
         view.addSubview(loadingView)
         loadingView.addSubview(loadingLabel)
@@ -222,6 +334,8 @@ class BuyViewController: UIViewController {
         scrollView.addSubview(likeMostView)
         scrollView.addSubview(lastUpdatedLabel)
         view.addSubview(logoutbutton)
+        view.addSubview(helpButton)
+        view.addSubview(verticalSeparator)
         visitorsBackgroundView.addSubview(visitorsTitleLabel)
         visitorsBackgroundView.addSubview(userPhoto1)
         visitorsBackgroundView.addSubview(userPhoto2)
@@ -236,102 +350,6 @@ class BuyViewController: UIViewController {
         likeMostView.addSubview(userPhoto9)
         likeMostView.addSubview(userPhoto10)
         likeMostView.addSubview(likeMostViewListButton)
-        setupConstraints()
-        
-        self.getUsers()
-    }
-    
-    func getUsers() {
-        Alamofire.request(.GET, "https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-117245197647/socialPicket/data.json")
-            .responseJSON { response in
-                
-                if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
-                    let response = JSON as! NSDictionary
-                    
-                    let userPhoto1: String! = String(response.objectForKey("blur1")!)
-                    let userPhoto2: String! = String(response.objectForKey("blur2")!)
-                    let userPhoto3: String! = String(response.objectForKey("blur3")!)
-                    let userPhoto4: String! = String(response.objectForKey("blur4")!)
-                    let userPhoto5: String! = String(response.objectForKey("blur5")!)
-                    
-                    let userPhoto6: String! = String(response.objectForKey("blur6")!)
-                    let userPhoto7: String! = String(response.objectForKey("blur7")!)
-                    let userPhoto8: String! = String(response.objectForKey("blur8")!)
-                    let userPhoto9: String! = String(response.objectForKey("blur9")!)
-                    let userPhoto10: String! = String(response.objectForKey("blur10")!)
-                    
-                    if let url  = NSURL(string: userPhoto1),
-                        _ = NSData(contentsOfURL: url)
-                    {
-                        self.setUserPhoto(userPhoto1, image: self.userPhoto1)
-                        self.setUserPhoto(userPhoto2, image: self.userPhoto2)
-                        self.setUserPhoto(userPhoto3, image: self.userPhoto3)
-                        self.setUserPhoto(userPhoto4, image: self.userPhoto4)
-                        self.setUserPhoto(userPhoto5, image: self.userPhoto5)
-                        
-                        self.setUserPhoto(userPhoto6, image: self.userPhoto6)
-                        self.setUserPhoto(userPhoto7, image: self.userPhoto7)
-                        self.setUserPhoto(userPhoto8, image: self.userPhoto8)
-                        self.setUserPhoto(userPhoto9, image: self.userPhoto9)
-                        self.setUserPhoto(userPhoto10, image: self.userPhoto10)
-                        
-                        UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
-                            self.scrollView.hidden = false
-                            self.scrollView.alpha = 1
-                            self.titleLabel.alpha = 1
-                            self.lastUpdatedLabel.alpha = 1
-                            self.visitorsBackgroundView.alpha = 1
-                            self.likeMostView.alpha = 1
-                            self.logoutbutton.alpha = 1
-                            self.loadingView.hidden = true
-                            self.loadingIndicator.stopAnimating()
-                            }, completion:nil)
-                        
-                    }
-                    
-                }
-        }
-    }
-    
-    func setUserPhoto(url: String, image: UIImageView) {
-        if let url  = NSURL(string: url), data = NSData(contentsOfURL: url) {
-            image.image = UIImage(data: data)
-        }
-    }
-    
-    func showAllList() {
-        let premium = NSUserDefaults.standardUserDefaults().boolForKey("premiumMember")
-        let inApp = InAppViewController()
-        let list = LastVisitorsViewController()
-        
-//        if premium {
-            self.navigationController?.pushViewController(list, animated: true)
-//        } else {
-//            self.navigationController?.pushViewController(inApp, animated: true)
-//        }
-    }
-    
-    func showLogoutAlert(sender: AnyObject) {
-        let alertController = UIAlertController(title: nil, message: "Are you sure you want to log out?", preferredStyle: .ActionSheet)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in}
-        alertController.addAction(cancelAction)
-        let destroyAction = UIAlertAction(title: "Log Out", style: .Destructive) { (action) in
-            self.logout()
-        }
-        
-        alertController.addAction(destroyAction)
-        self.presentViewController(alertController, animated: true) {}
-    }
-    
-    func logout() {
-        let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
-        fbLoginManager.logOut()
-        self.navigationController?.popViewControllerAnimated(true)
-    }
-    
-    func setupConstraints() {
-        let scrollViewHeight = self.view.bounds.height - 20
         
         scrollView.heightAnchor.constraintEqualToConstant(scrollViewHeight).active = true
         scrollView.widthAnchor.constraintEqualToAnchor(view.widthAnchor).active = true
@@ -423,11 +441,6 @@ class BuyViewController: UIViewController {
         likeMostViewListButton.widthAnchor.constraintEqualToConstant(270).active = true
         likeMostViewListButton.heightAnchor.constraintEqualToConstant(35).active = true
         
-        logoutbutton.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor, constant: -10).active = true
-        logoutbutton.widthAnchor.constraintEqualToAnchor(view.widthAnchor, constant: -50).active = true
-        logoutbutton.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        logoutbutton.heightAnchor.constraintEqualToConstant(35).active = true
-        
         likeMostTitleLabel.topAnchor.constraintEqualToAnchor(likeMostView.topAnchor, constant: 10).active = true
         likeMostTitleLabel.leftAnchor.constraintEqualToAnchor(likeMostView.leftAnchor, constant: 20).active = true
         
@@ -436,10 +449,16 @@ class BuyViewController: UIViewController {
         likeMostView.widthAnchor.constraintEqualToAnchor(scrollView.widthAnchor).active = true
         likeMostView.heightAnchor.constraintEqualToConstant(150).active = true
         
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = true
+        logoutbutton.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor, constant: -10).active = true
+        logoutbutton.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -20).active = true
+        
+        helpButton.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor, constant: -10).active = true
+        helpButton.rightAnchor.constraintEqualToAnchor(verticalSeparator.rightAnchor, constant: -10).active = true
+        
+        verticalSeparator.centerYAnchor.constraintEqualToAnchor(logoutbutton.centerYAnchor).active = true
+        verticalSeparator.rightAnchor.constraintEqualToAnchor(logoutbutton.leftAnchor, constant: -10).active = true
+        verticalSeparator.heightAnchor.constraintEqualToConstant(10).active = true
+        verticalSeparator.widthAnchor.constraintEqualToConstant(1).active = true
         
     }
     
